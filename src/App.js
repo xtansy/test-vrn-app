@@ -7,7 +7,6 @@ import { TreeNode } from "./components";
 import { getAllCitizens } from "./utils/requests/citizens";
 
 const App = () => {
-
     const [citizens, setCitizens] = useState();
 
     const [isLoading, setIsLoading] = useState(true);
@@ -17,20 +16,16 @@ const App = () => {
             const nodes = makeTree(data).root.children;
             setCitizens(nodes);
             setIsLoading(false);
-        })
-    }, [])
-
+        });
+    }, []);
 
     if (isLoading) return null;
 
     return (
-        <div className="content">{
-            citizens.map(node => {
-                return (
-                    <TreeNode node={node} key={node.value.name} />
-                )
-            })
-        }
+        <div className="content">
+            {citizens.map((node) => {
+                return <TreeNode node={node} key={node.value.name} />;
+            })}
         </div>
     );
 };

@@ -2,12 +2,17 @@ import "./Tooltip.scss";
 
 import { useState } from "react";
 
-export const Tooltip = ({ children, text, isLoading, onMouseEnterCallback }) => {
+export const Tooltip = ({
+    children,
+    text,
+    isLoading,
+    onMouseEnterCallback,
+}) => {
     const [isVisible, setIsVisible] = useState(false);
 
     const onMouseEnter = () => {
         if (onMouseEnterCallback) {
-            onMouseEnterCallback()
+            onMouseEnterCallback();
         }
         setIsVisible(true);
     };
@@ -17,13 +22,17 @@ export const Tooltip = ({ children, text, isLoading, onMouseEnterCallback }) => 
     };
 
     return (
-        <div className="tooltip" onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
+        <div
+            className="tooltip"
+            onMouseEnter={onMouseEnter}
+            onMouseLeave={onMouseLeave}
+        >
             {children}
-            {isVisible && !isLoading &&
+            {isVisible && !isLoading && (
                 <div className="tooltip__content">
                     <p>{text}</p>
-                </div>}
+                </div>
+            )}
         </div>
     );
 };
-

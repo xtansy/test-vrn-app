@@ -18,16 +18,13 @@ export const makeTree = (citienz) => {
             temp = elem;
         }
 
-        // const nameNode = new Node(citienz[i].name);
-        // temp.addChild(nameNode);
         const humanNode = new Node({
             name: citienz[i].name,
-            cityId: citienz[i].city_id
-        })
-
+            cityId: citienz[i].city_id,
+        });
 
         temp.addChild(humanNode);
     }
 
     return tree;
-}
+};

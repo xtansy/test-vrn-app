@@ -7,7 +7,6 @@ import { NameNode } from "../";
 import { ArrowDown, ArrowRight } from "../../SVG";
 
 export const TreeNode = ({ node }) => {
-
     const [isOpen, setIsOpen] = useState(true);
 
     const handleToggle = () => {
@@ -21,24 +20,20 @@ export const TreeNode = ({ node }) => {
         <div className="treeNode">
             <div className="treeNode__content" onClick={handleToggle}>
                 {hasChildren && (isOpen ? <ArrowDown /> : <ArrowRight />)}
-                {
-                    isNameNode
-                        ? <NameNode value={node.value} />
-                        : <Node value={node.value} />
-                }
+                {isNameNode ? (
+                    <NameNode value={node.value} />
+                ) : (
+                    <Node value={node.value} />
+                )}
             </div>
-            {
-                hasChildren && isOpen && (
-                    <div style={{ marginLeft: "2rem" }}>
-                        {node.children.map((child) => {
-                            const key = Math.round(Math.random() * 10000);
-                            return (
-                                <TreeNode key={key} node={child} />
-                            )
-                        })}
-                    </div>
-                )
-            }
-        </div >
+            {hasChildren && isOpen && (
+                <div style={{ marginLeft: "2rem" }}>
+                    {node.children.map((child) => {
+                        const key = Math.round(Math.random() * 10000);
+                        return <TreeNode key={key} node={child} />;
+                    })}
+                </div>
+            )}
+        </div>
     );
 };
