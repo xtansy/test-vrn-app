@@ -8,29 +8,28 @@ import { getAllCitizens } from "./utils/requests/citizens";
 
 const App = () => {
 
-    // const [citizens, setCitizens] = useState();
+    const [citizens, setCitizens] = useState();
 
-    // const [isLoading, setIsLoading] = useState(true);
+    const [isLoading, setIsLoading] = useState(true);
 
-    // useEffect(() => {
-    //     getAllCitizens().then(({ data }) => {
-    //         const nodes = makeTree(data).root.children;
-    //         setCitizens(nodes);
-    //         setIsLoading(false);
-    //     })
-    // }, [])
+    useEffect(() => {
+        getAllCitizens().then(({ data }) => {
+            const nodes = makeTree(data).root.children;
+            setCitizens(nodes);
+            setIsLoading(false);
+        })
+    }, [])
 
 
-    // if (isLoading) return null;
+    if (isLoading) return null;
 
     return (
         <div className="content">{
-            <h1>TEST</h1>
-            // citizens.map(node => {
-            //     return (
-            // <TreeNode node={node} key={node.value.name} />
-            // )
-            // })
+            citizens.map(node => {
+                return (
+                    <TreeNode node={node} key={node.value.name} />
+                )
+            })
         }
         </div>
     );
