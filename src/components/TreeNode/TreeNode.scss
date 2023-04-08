@@ -1,7 +1,9 @@
 .treeNode {
     &__content {
+        cursor: pointer;
         display: flex;
         align-items: center;
         margin-bottom: 20px;
+        width: fit-content;
     }
 }

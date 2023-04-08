@@ -4,6 +4,7 @@ import { useState } from "react";
 
 import { Node } from "../../ui";
 import { NameNode } from "../";
+import { ArrowDown, ArrowRight } from "../../SVG";
 
 export const TreeNode = ({ node }) => {
 
@@ -19,7 +20,7 @@ export const TreeNode = ({ node }) => {
     return (
         <div className="treeNode">
             <div className="treeNode__content" onClick={handleToggle}>
-                {hasChildren && (isOpen ? "👇" : "👉")}
+                {hasChildren && (isOpen ? <ArrowDown /> : <ArrowRight />)}
                 {
                     isNameNode
                         ? <NameNode value={node.value} />

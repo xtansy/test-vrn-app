@@ -6,7 +6,6 @@ import { makeTree } from "./utils";
 import { TreeNode } from "./components";
 import { getAllCitizens } from "./utils/requests/citizens";
 
-
 const App = () => {
 
     const [citizens, setCitizens] = useState();
