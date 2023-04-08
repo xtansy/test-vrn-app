@@ -1,4 +1,4 @@
-import { Node, Tree } from "../tree/tree";
+import { Node, Tree } from "../";
 
 export const makeTree = (citienz) => {
     const tree = new Tree("root");

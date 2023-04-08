@@ -1,62 +1,37 @@
 import "./App.scss";
 
-import { makeTree } from "./utils/makeTree/makeTree";
+import { useState, useEffect } from "react";
 
+import { makeTree } from "./utils";
 import { TreeNode } from "./components";
+import { getAllCitizens } from "./utils/requests/citizens";
 
-const citienz = [
-    {
-        id: 0,
-        name: "Анна",
-        city_id: 1,
-        groups: [
-            {
-                type: "city",
-                name: "Москва г.",
-            },
-            {
-                type: "district",
-                name: "Пресненский р-н",
-            },
-            {
-                type: "street",
-                name: "Гашека ул.",
-            },
-        ],
-    },
-    {
-        id: 1,
-        name: "Степан",
-        city_id: 1,
-        groups: [
-            {
-                type: "city",
-                name: "Москва г.",
-            },
-            {
-                type: "district",
-                name: "Пресненский р-н",
-            },
-            {
-                type: "street",
-                name: "Рочдельская ул.",
-            },
-        ],
-    },
-];
 
 const App = () => {
-    const nodes = makeTree(citienz).root.children;
+
+    const [citizens, setCitizens] = useState();
+
+    const [isLoading, setIsLoading] = useState(true);
+
+    useEffect(() => {
+        getAllCitizens().then(({ data }) => {
+            const nodes = makeTree(data).root.children;
+            setCitizens(nodes);
+            setIsLoading(false);
+        })
+    }, [])
+
+
+    if (isLoading) return null;
 
     return (
         <div className="content">{
-            nodes.map(node => {
+            citizens.map(node => {
                 return (
-                    <TreeNode node={node} key={Math.random() * 1000} />
+                    <TreeNode node={node} key={node.value.name} />
                 )
             })
         }
-
         </div>
     );
 };

@@ -13,10 +13,6 @@ export class Node {
             this.children.splice(index, 1);
         }
     }
-
-    find(item) {
-        return this.children.includes(item);
-    }
 }
 
 export class Tree {

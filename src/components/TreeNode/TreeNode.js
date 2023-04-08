@@ -23,9 +23,12 @@ export const TreeNode = ({ node }) => {
             {
                 hasChildren && isOpen && (
                     <div style={{ marginLeft: "2rem" }}>
-                        {node.children.map((child, i) => (
-                            <TreeNode key={Math.random() * 1000} node={child} />
-                        ))}
+                        {node.children.map((child, i) => {
+                            const key = Math.round(Math.random() * 10000);
+                            return (
+                                <TreeNode key={key} node={child} />
+                            )
+                        })}
                     </div>
                 )
             }
