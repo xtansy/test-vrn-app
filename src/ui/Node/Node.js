@@ -1,9 +1,10 @@
-import "./Field.scss";
+import "./Node.scss";
 
-export const Field = ({ value }) => {
+export const Node = ({ value }) => {
     return (
-        <div className="field">
+        <div className="node">
             <h2 className="field__value">{value}</h2>
         </div>
     );
 };
+

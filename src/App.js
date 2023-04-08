@@ -1,11 +1,8 @@
 import "./App.scss";
 
-import { useEffect } from "react";
-
-import { Field } from "./components";
 import { makeTree } from "./utils/makeTree/makeTree";
 
-import { FileTree } from "./FileTree";
+import { TreeNode } from "./components";
 
 const citienz = [
     {
@@ -49,30 +46,17 @@ const citienz = [
 ];
 
 const App = () => {
-    const tree = makeTree(citienz);
-
-    const printTree = (node, level = 0) => {
-        const margin = level * 20;
-
-        for (let i = 0; i < node.children.length; i++) {
-            printTree(node.children[i], level + 1);
-        }
-
-        console.log("вызов");
-
-        return (
-            <Field value={node.value} style={{ marginRight: `${margin}px` }} />
-        );
-    };
+    const nodes = makeTree(citienz).root.children;
 
     return (
-        <div className="content">
-            {}
-            {/* {
-				printTree(tree.root)
-			} */}
+        <div className="content">{
+            nodes.map(node => {
+                return (
+                    <TreeNode node={node} />
+                )
+            })
+        }
 
-            <FileTree data={tree} />
         </div>
     );
 };
