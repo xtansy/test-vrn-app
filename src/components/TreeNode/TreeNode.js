@@ -3,6 +3,7 @@ import "./TreeNode.scss";
 import { useState } from "react";
 
 import { Node } from "../../ui";
+import { NameNode } from "../";
 
 export const TreeNode = ({ node }) => {
 
@@ -13,12 +14,17 @@ export const TreeNode = ({ node }) => {
     };
 
     const hasChildren = node.children && node.children.length > 0;
+    const isNameNode = !!node.value.cityId;
 
     return (
         <div className="treeNode">
             <div className="treeNode__content" onClick={handleToggle}>
                 {hasChildren && (isOpen ? "👇" : "👉")}
-                <Node value={node.value} isWithTooltip={!!node.value.cityId} />
+                {
+                    isNameNode
+                        ? <NameNode value={node.value} />
+                        : <Node value={node.value} />
+                }
             </div>
             {
                 hasChildren && isOpen && (
