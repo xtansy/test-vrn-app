@@ -52,7 +52,7 @@ const App = () => {
         <div className="content">{
             nodes.map(node => {
                 return (
-                    <TreeNode node={node} />
+                    <TreeNode node={node} key={Math.random() * 1000} />
                 )
             })
         }

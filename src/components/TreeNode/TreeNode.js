@@ -18,13 +18,13 @@ export const TreeNode = ({ node }) => {
         <div className="treeNode">
             <div className="treeNode__content" onClick={handleToggle}>
                 {hasChildren && (isOpen ? "👇" : "👉")}
-                <Node value={node.value} />
+                <Node value={node.value} isWithTooltip={!!node.value.cityId} />
             </div>
             {
                 hasChildren && isOpen && (
                     <div style={{ marginLeft: "2rem" }}>
-                        {node.children.map((child) => (
-                            <TreeNode key={child.value} node={child} />
+                        {node.children.map((child, i) => (
+                            <TreeNode key={Math.random() * 1000} node={child} />
                         ))}
                     </div>
                 )

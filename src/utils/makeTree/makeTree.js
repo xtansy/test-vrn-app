@@ -8,9 +8,9 @@ export const makeTree = (citienz) => {
 
         for (let j = 0; j < citienz[i].groups.length; j++) {
             let name = citienz[i].groups[j].name;
-            let elem = temp.children.find((child) => child.value === name);
+            let elem = temp.children.find((child) => child.value.name === name);
             if (!elem) {
-                const node = new Node(name);
+                const node = new Node({ name: name });
                 temp.addChild(node);
                 temp = node;
                 continue;
@@ -18,8 +18,15 @@ export const makeTree = (citienz) => {
             temp = elem;
         }
 
-        const nameNode = new Node(citienz[i].name);
-        temp.addChild(nameNode);
+        // const nameNode = new Node(citienz[i].name);
+        // temp.addChild(nameNode);
+        const humanNode = new Node({
+            name: citienz[i].name,
+            cityId: citienz[i].city_id
+        })
+
+
+        temp.addChild(humanNode);
     }
 
     return tree;

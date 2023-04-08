@@ -1,9 +1,21 @@
 import "./Node.scss";
 
-export const Node = ({ value }) => {
+import { Tooltip } from "../";
+
+export const Node = ({ value, isWithTooltip }) => {
+
+    if (isWithTooltip) {
+        return (
+            <Tooltip text="ТУЛТИП">
+                <div className="node">
+                    <h2 className="field__value">{value.name}</h2>
+                </div>
+            </Tooltip>
+        )
+    }
     return (
         <div className="node">
-            <h2 className="field__value">{value}</h2>
+            <h2 className="field__value">{value.name}</h2>
         </div>
     );
 };
