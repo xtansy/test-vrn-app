@@ -1,9 +1,10 @@
 import axios from "axios";
 
-const LOCAL = process.env.URL || "http://localhost:8080/";
+const URL = process.env.BACKEND_URL || "http://localhost:8080/";
+console.log(URL);
 
 const api = axios.create({
-    baseURL: LOCAL,
+    baseURL: URL,
 });
 
 export default api;
