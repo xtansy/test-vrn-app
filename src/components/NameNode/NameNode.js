@@ -1,5 +1,4 @@
-import { useState, useEffect } from "react";
-
+import { useState } from "react";
 
 import { Node, Tooltip } from "../../ui";
 
@@ -20,7 +19,7 @@ export const NameNode = ({ value }) => {
 
     return (
         <Tooltip text={info} isLoading={isLoading} onMouseEnterCallback={onMouseEnterCallback}>
-            <Node value={value} />
+            <Node clazz="node_name" value={value} />
         </Tooltip>
     );
 };

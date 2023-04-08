@@ -1,9 +1,9 @@
 import "./Node.scss";
 
-export const Node = ({ value }) => {
+export const Node = ({ value, clazz }) => {
     return (
-        <div className="node">
-            <h2 className="field__value">{value.name}</h2>
+        <div className={`node ${clazz}`}>
+            <h2 >{value.name}</h2>
         </div>
     );
 };
